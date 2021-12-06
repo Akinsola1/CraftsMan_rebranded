@@ -1,15 +1,23 @@
 import 'package:craftsman_refurbished/screens/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Problem_description extends StatelessWidget {
+class Problem_description extends StatefulWidget {
   final String title;
   final String image;
   const Problem_description(
       {Key? key, required this.title, required this.image})
       : super(key: key);
 
+  @override
+  State<Problem_description> createState() => _Problem_descriptionState();
+}
+
+class _Problem_descriptionState extends State<Problem_description> {
+  final items = ['Problem1', 'Problem2', 'Problem3', 'Problem4', 'Problem5', 'Problem6', 'Problem7'];
+  String? value;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -23,7 +31,7 @@ class Problem_description extends StatelessWidget {
               const SizedBox(
                 height: 70,
               ),
-              Text('Complete ${title} request',
+              Text('Complete ${widget.title} request',
                   style: GoogleFonts.openSans(
                     color: Colors.black,
                     fontSize: 22,
@@ -42,20 +50,21 @@ class Problem_description extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  TextField(
-                    cursorColor: Colors.black,
-                    style: const TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      hintText: 'Select problem',
-                      hintStyle: GoogleFonts.openSans(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.blue, style: BorderStyle.solid),
-                          borderRadius: BorderRadius.circular(9)),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                       border: Border.all(color: Colors.grey, width: 1),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton <String>(
+                        value: value,
+                        isExpanded: true,
+                        iconSize: 36,
+                        icon: Icon(Icons.arrow_drop_down_outlined, color:Colors.black),
+                        items: items.map(buildMenueItems).toList(),
+                        onChanged: (value) =>setState(()=>  this.value = value,)
+                        ),
                     ),
                   ),
                   const SizedBox(
@@ -125,9 +134,14 @@ class Problem_description extends StatelessWidget {
                 width: size.width * .6,
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9),),
+                      borderRadius: BorderRadius.circular(9),
+                    ),
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Search(title: title, image: image)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Search(title: widget.title, image: widget.image)));
                     },
                     padding: EdgeInsets.all(10.0),
                     color: Colors.blue.shade800,
@@ -143,5 +157,13 @@ class Problem_description extends StatelessWidget {
         ),
       ),
     );
+
+    
   }
+  DropdownMenuItem <String> buildMenueItems (String item) => DropdownMenuItem(
+    value: item,
+    child: Text(
+      item,
+      style: TextStyle(fontSize: 20),
+    ));
 }
