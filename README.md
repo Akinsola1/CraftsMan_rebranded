@@ -1,6 +1,6 @@
 # craftsman_refurbished
 ```
-class CraftsMan_Rebranded extends 100 project challenge {
+class CraftsMan_Rebranded extends 100project_challenge {
   video() {
     return {
       "title": "Flutter Home Service Application",
@@ -11,9 +11,9 @@ class CraftsMan_Rebranded extends 100 project challenge {
 }
 ```
 Packages
-- [avater_glow] (https://pub.dev/packages/avatar_glow)
-- [animate_do] (https://pub.dev/packages/animate_do)
-- [bouncing_widget] (https://pub.dev/packages/bouncing_widget)
+- [avater_glow](https://pub.dev/packages/avatar_glow)
+- [animate_do](https://pub.dev/packages/animate_do)
+- [bouncing_widget](https://pub.dev/packages/bouncing_widget)
 
 
 # Development Setup
