@@ -1,6 +1,7 @@
 # craftsman_refurbished
+A  part of #100flutterprojects. Let's call a craftsman 🤩 🥳
 ```
-class CraftsMan_Rebranded extends 100project_challenge {
+class CraftsMan_Rebranded extends 100flutterprojects {
   video() {
     return {
       "title": "Flutter Home Service Application",
@@ -10,7 +11,7 @@ class CraftsMan_Rebranded extends 100project_challenge {
   }
 }
 ```
-Packages
+Packages 
 - [avater_glow](https://pub.dev/packages/avatar_glow)
 - [animate_do](https://pub.dev/packages/animate_do)
 - [bouncing_widget](https://pub.dev/packages/bouncing_widget)
